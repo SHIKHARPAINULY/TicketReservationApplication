@@ -1,0 +1,40 @@
+<div class="container-fluid">
+  <!-- Button for seat selection & max 7 seat can reserve at one time -->
+  <div class="row m-3">
+    <div class="col-md-3 mt-4">  
+      <h6>How Many Seats You Want To Reserver</h6>
+    </div>
+    <div class="col-md-1 mt-3"><input type="submit" value="1" (click)="reserveSeat($event.target.value)"/></div>
+    <div class="col-md-1 mt-3"><input type="submit" value="2" (click)="reserveSeat($event.target.value)"/></div>
+    <div class="col-md-1 mt-3"><input type="submit" value="3" (click)="reserveSeat($event.target.value)"/></div>
+    <div class="col-md-1 mt-3"><input type="submit" value="4" (click)="reserveSeat($event.target.value)"/></div>
+    <div class="col-md-1 mt-3"><input type="submit" value="5" (click)="reserveSeat($event.target.value)"/></div>
+    <div class="col-md-1 mt-3"><input type="submit" value="6" (click)="reserveSeat($event.target.value)"/></div>
+    <div class="col-md-1 mt-3"><input type="submit" value="7" (click)="reserveSeat($event.target.value)"/></div>
+  </div>
+<!-- Iterating through the Seats Array Available & displaying data accordingly -->
+  <div class="row mt-2">
+    <div class="col-md-10 ml-auto mr-auto">
+      <div class="table-responsive">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th scope="col">Row</th>
+              <th scope="col">Seats</th>
+            </tr>
+          </thead>
+          <tbody>
+              <tr *ngFor="let item of TrainseatNumbers; index as i" class="m-4 border border-info">
+                <th scope="row">R - {{i+1}}</th>
+                <span *ngFor="let ss of item">
+                  <td class="bg-secondary" >{{ss.seatNumber}}</td>
+                  <!-- Dynamic class addition as per booking status && dynamic html append as per booking status-->
+                  <td [class]="ss.booked == true ? 'booked' : 'available'" >{{ss.booked == true ? 'booked' : 'Vacant'}}</td>
+                </span>
+              </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
